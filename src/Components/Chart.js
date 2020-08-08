@@ -1,6 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import { useTheme } from '@material-ui/core/styles';
-import {LineChart, Line, XAxis, YAxis, Label, ResponsiveContainer, CartesianGrid, Tooltip} from 'recharts';
+import {LineChart, Line, XAxis, ResponsiveContainer, CartesianGrid, Tooltip} from 'recharts';
 import Title from './Title';
 import {data} from "../data_mock";
 
@@ -12,7 +11,7 @@ Object.keys(data).forEach(key => {
 const newPrice = price.slice(1,9);
 
 export default function Chart() {
-    const theme = useTheme();
+    // const theme = useTheme();
     const [chartData, setChartData] = useState([]);
 
     useEffect(() => {

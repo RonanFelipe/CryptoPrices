@@ -22,6 +22,7 @@ import { mainListItems, secondaryListItems } from './listItems';
 import Chart from './Chart';
 import Deposits from './Deposits';
 import Orders from './Orders';
+import CustomClearIndicator from "./SearchCard";
 
 function Copyright() {
     return (
@@ -112,6 +113,22 @@ const useStyles = makeStyles((theme) => ({
         overflow: 'auto',
         flexDirection: 'column',
     },
+    paperSearch: {
+        marginTop: 10,
+        marginRight: 29,
+        marginLeft: 24,
+        height: 70,
+    },
+    searchInput: {
+        marginTop: 1,
+        marginRight: 4,
+        marginLeft: 12,
+        marginBottom: 4,
+        height: 50,
+    },
+    searchTitle: {
+        fontWeight: 'bold',
+    },
     fixedHeight: {
         height: 240,
     },
@@ -143,7 +160,7 @@ export default function Dashboard() {
                         <MenuIcon />
                     </IconButton>
                     <Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>
-                        Dashboard
+                        Crypto Moedas
                     </Typography>
                     <IconButton color="inherit">
                         <Badge badgeContent={4} color="secondary">
@@ -171,6 +188,12 @@ export default function Dashboard() {
             </Drawer>
             <main className={classes.content}>
                 <div className={classes.appBarSpacer} />
+                <Paper className={classes.paperSearch} variant="outlined" elevation={3}>
+                    <div className={classes.searchInput}>
+                        <Typography className={classes.searchTitle}>Search</Typography>
+                        <CustomClearIndicator/>
+                    </div>
+                </Paper>
                 <Container maxWidth="lg" className={classes.container}>
                     <Grid container spacing={3}>
                         {/* Chart */}
