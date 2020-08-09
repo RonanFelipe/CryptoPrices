@@ -21,21 +21,21 @@ export default function Chart() {
         console.log("second use effect");
         console.log(apiData);
         if (apiData !== undefined) {
-            const coinObject = apiData.coins;
-            let coinsArray = [];
-            Object.keys(coinObject).forEach(key => {
-                coinsArray.push({name: key, last: parseFloat(coinObject[key].last), high24hr: parseFloat(coinObject[key].high24hr)})
-            });
+            // const coinObject = apiData.coins;
+            const coinsArray = apiData.chart;
+            // Object.keys(coinObject).forEach(key => {
+            //     coinsArray.push({name: key, last: parseFloat(coinObject[key].last), high24hr: parseFloat(coinObject[key].high24hr)})
+            // });
             console.log("---- second use effect");
             console.log(coinsArray);
-            setChartData(coinsArray.slice(1,9));
+            setChartData(coinsArray);
         }
         console.log("2 end second use effect");
     }, [apiData, setChartData]);
 
     return (
         <React.Fragment>
-            <Title>Today</Title>
+            <Title>Gráfico Com Últimos Valores</Title>
             <ResponsiveContainer>
                 <LineChart width={900} height={300} data={chartData} margin={{top: 5, right: 30, left: 20, bottom: 5,}}>
                     <CartesianGrid strokeDasharray="3 3" />

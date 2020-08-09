@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import Select from 'react-select';
-import { initSearch } from "../actions";
+import { initSearch, initChart } from "../actions";
 
 const CustomClearText = () => 'clear all';
 const ClearIndicator = props => {
@@ -36,12 +36,12 @@ export default function CustomClearIndicator() {
         {value: 'BTC_DOGE', label: 'BTC_DOGE'},
         {value: 'BTC_LTC', label: 'BTC_LTC'}
     ];
-    const [selectedCoins, setSelectedCoins] = useState([]);
     const [optionValues, setOptionValues] = useState([]);
 
     useEffect(() => {
         if (coins !== undefined) {
             dispatch(initSearch());
+            dispatch(initChart(defaultSearchValues));
         }
     }, [coins, dispatch]);
 
@@ -52,13 +52,14 @@ export default function CustomClearIndicator() {
     }, [searchValues, setOptionValues]);
 
     const handleChange = (option) => {
-        setSelectedCoins(option);
-        console.log(selectedCoins);
+        console.log("Options");
+        console.log(option);
+        dispatch(initChart(option));
     };
 
     return (
         <Select
-            closeMenuOnSelect={false}
+            closeMenuOnSelect
             components={{ ClearIndicator }}
             styles={{ clearIndicator: ClearIndicatorStyles }}
             defaultValue={defaultSearchValues}

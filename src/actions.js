@@ -1,4 +1,4 @@
-import { UPDATE_COINS_DATA, UPDATE_COINS_DATA_SUCCESS, UPDATE_COINS_DATA_ERROR } from './ActionTypes';
+import {UPDATE_COINS_DATA, UPDATE_COINS_DATA_SUCCESS, UPDATE_COINS_DATA_ERROR, LOAD_CHART_DATA} from './ActionTypes';
 import {LOAD_SEARCH_VALUES} from './ActionTypes';
 import fetch from 'cross-fetch';
 const api_url = 'https://poloniex.com/public?command=returnTicker';
@@ -65,6 +65,30 @@ export function initSearch() {
                 coinsPreLoadKeys.push({value: key, label: key})
             });
             dispatch(loadSearch(coinsPreLoadKeys));
+        }
+    }
+}
+
+function loadChart(values) {
+    return {
+        type: LOAD_CHART_DATA,
+        chartData: values
+    }
+}
+
+export function initChart(searchOptions) {
+    return (dispatch, getState) => {
+        const { coinsReducer: {coins} = {} } = getState();
+        if (coins !== undefined) {
+            let searchResult = [];
+            Object.keys(coins).forEach(key => {
+                searchOptions.forEach(function (search_key) {
+                    if (search_key.value === key) {
+                        searchResult.push({name: key, last: parseFloat(coins[key].last), high24hr: parseFloat(coins[key].high24hr)})
+                    }
+                });
+            });
+            dispatch(loadChart(searchResult));
         }
     }
 }
