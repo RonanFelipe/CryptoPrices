@@ -1,23 +1,37 @@
 import React, {useEffect, useState} from 'react';
-import {LineChart, Line, XAxis, ResponsiveContainer, CartesianGrid, Tooltip} from 'recharts';
+import { useDispatch, useSelector } from "react-redux";
+import {LineChart, Line, XAxis, YAxis, ResponsiveContainer, CartesianGrid, Tooltip} from 'recharts';
+import { fetchCoinsIfNeeded } from "../actions";
 import Title from './Title';
-import {data} from "../data_mock";
-
-let price = [];
-Object.keys(data).forEach(key => {
-    price.push({name: key, last: parseFloat(data[key].last), high24hr: parseFloat(data[key].high24hr)})
-});
-
-const newPrice = price.slice(1,9);
 
 export default function Chart() {
-    // const theme = useTheme();
+    const apiData = useSelector(state => state.coinsReducer);
+    const dispatch = useDispatch();
     const [chartData, setChartData] = useState([]);
 
     useEffect(() => {
-        setChartData(newPrice);
-        console.log(chartData)
-    }, [chartData, setChartData]);
+        if (apiData.doUpdate) {
+            dispatch(fetchCoinsIfNeeded());
+            console.log("1 inside");
+        }
+        console.log("1");
+    }, [setChartData, apiData, dispatch]);
+
+    useEffect(() => {
+        console.log("second use effect");
+        console.log(apiData);
+        if (apiData !== undefined) {
+            const coinObject = apiData.coins;
+            let coinsArray = [];
+            Object.keys(coinObject).forEach(key => {
+                coinsArray.push({name: key, last: parseFloat(coinObject[key].last), high24hr: parseFloat(coinObject[key].high24hr)})
+            });
+            console.log("---- second use effect");
+            console.log(coinsArray);
+            setChartData(coinsArray.slice(1,9));
+        }
+        console.log("2 end second use effect");
+    }, [apiData, setChartData]);
 
     return (
         <React.Fragment>
@@ -26,7 +40,7 @@ export default function Chart() {
                 <LineChart width={900} height={300} data={chartData} margin={{top: 5, right: 30, left: 20, bottom: 5,}}>
                     <CartesianGrid strokeDasharray="3 3" />
                     <XAxis dataKey="name" />
-
+                    <YAxis/>
                     <Tooltip />
 
                     <Line type="monotone" dataKey="high24hr" stroke="blue" />

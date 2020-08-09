@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
-
+import { useDispatch, useSelector } from "react-redux";
 import Select from 'react-select';
-import { coinsName } from '../data_mock';
+import { initSearch } from "../actions";
 
 const CustomClearText = () => 'clear all';
 const ClearIndicator = props => {
@@ -28,7 +28,28 @@ const ClearIndicatorStyles = (base, state) => ({
 });
 
 export default function CustomClearIndicator() {
+    const dispatch = useDispatch();
+    const coins = useSelector(state => state.coinsReducer.coins);
+    const searchValues = useSelector(state => state.coinsReducer.search);
+    const defaultSearchValues = [
+        {value: 'BTC_DASH', label: 'BTC_DASH'},
+        {value: 'BTC_DOGE', label: 'BTC_DOGE'},
+        {value: 'BTC_LTC', label: 'BTC_LTC'}
+    ];
     const [selectedCoins, setSelectedCoins] = useState([]);
+    const [optionValues, setOptionValues] = useState([]);
+
+    useEffect(() => {
+        if (coins !== undefined) {
+            dispatch(initSearch());
+        }
+    }, [coins, dispatch]);
+
+    useEffect(() => {
+       if (searchValues !== undefined) {
+           setOptionValues(searchValues);
+       }
+    }, [searchValues, setOptionValues]);
 
     const handleChange = (option) => {
         setSelectedCoins(option);
@@ -40,9 +61,9 @@ export default function CustomClearIndicator() {
             closeMenuOnSelect={false}
             components={{ ClearIndicator }}
             styles={{ clearIndicator: ClearIndicatorStyles }}
-            defaultValue={[coinsName[4], coinsName[5]]}
+            defaultValue={defaultSearchValues}
             isMulti
-            options={coinsName}
+            options={optionValues}
             onChange={handleChange}
         />
     );

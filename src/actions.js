@@ -1,0 +1,70 @@
+import { UPDATE_COINS_DATA, UPDATE_COINS_DATA_SUCCESS, UPDATE_COINS_DATA_ERROR } from './ActionTypes';
+import {LOAD_SEARCH_VALUES} from './ActionTypes';
+import fetch from 'cross-fetch';
+const api_url = 'https://poloniex.com/public?command=returnTicker';
+
+export function requestCoins() {
+    return {
+        type: UPDATE_COINS_DATA,
+    }
+}
+
+function receiveCoins(json) {
+    return {
+        type: UPDATE_COINS_DATA_SUCCESS,
+        coins: json
+    }
+}
+
+function fetchCoins() {
+    return function (dispatch) {
+        dispatch(requestCoins());
+        return fetch(api_url)
+            .then(response => response.json())
+                .then(json => dispatch(receiveCoins(json)))
+    }
+}
+
+function shouldFetchCoins(state) {
+    const update = state.coins;
+    if (update === undefined) {
+        return true
+    } else if (update.length < 1) {
+        return true
+    } else if (update.isFetching) {
+        return false
+    } else {
+        return update.doUpdate
+    }
+}
+
+export function fetchCoinsIfNeeded() {
+    return (dispatch, getState) => {
+        if (shouldFetchCoins(getState())) {
+            return dispatch(fetchCoins())
+        } else {
+            return Promise.resolve()
+        }
+    }
+}
+
+function loadSearch(values) {
+    return {
+        type: LOAD_SEARCH_VALUES,
+        search: values,
+    }
+}
+
+export function initSearch() {
+    return (dispatch, getState) => {
+        const { coinsReducer: {coins} = {} } = getState();
+
+        if (coins !== undefined) {
+            let coinsPreLoadKeys = [];
+            Object.keys(coins).forEach(key => {
+                coinsPreLoadKeys.push({value: key, label: key})
+            });
+            dispatch(loadSearch(coinsPreLoadKeys));
+        }
+    }
+}
