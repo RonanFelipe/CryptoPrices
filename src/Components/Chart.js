@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import {LineChart, Line, XAxis, YAxis, ResponsiveContainer, CartesianGrid, Tooltip} from 'recharts';
-import { fetchCoinsIfNeeded } from "../actions";
+import { fetchCoinsIfNeeded, loadCard } from "../actions";
 import Title from './Title';
 
 export default function Chart() {
@@ -33,11 +33,23 @@ export default function Chart() {
         console.log("2 end second use effect");
     }, [apiData, setChartData]);
 
+    function getData(chartDataClick) {
+        if (chartDataClick.activeLabel) {
+            dispatch(loadCard(chartDataClick.activeLabel));
+        }
+    }
+
     return (
         <React.Fragment>
             <Title>Gráfico Com Últimos Valores</Title>
             <ResponsiveContainer>
-                <LineChart width={900} height={300} data={chartData} margin={{top: 5, right: 30, left: 20, bottom: 5,}}>
+                <LineChart
+                    width={900}
+                    height={300}
+                    data={chartData}
+                    margin={{top: 5, right: 30, left: 20, bottom: 5,}}
+                    onClick={getData}
+                >
                     <CartesianGrid strokeDasharray="3 3" />
                     <XAxis dataKey="name" />
                     <YAxis/>
