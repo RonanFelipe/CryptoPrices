@@ -1,4 +1,4 @@
-import {LOAD_CHART_DATA, UPDATE_COINS_DATA, UPDATE_COINS_DATA_SUCCESS} from "./ActionTypes";
+import {LOAD_CHART_DATA, LOAD_COIN_DETAILS, UPDATE_COINS_DATA, UPDATE_COINS_DATA_SUCCESS} from "./ActionTypes";
 import { LOAD_SEARCH_VALUES } from "./ActionTypes";
 import {combineReducers} from "redux";
 
@@ -7,7 +7,8 @@ const initialState = {
     doUpdate: true,
     coins: {},
     search: [],
-    chart: []
+    chart: [],
+    coinDetails: [],
 };
 
 function coinsReducer(state = initialState, action) {
@@ -31,6 +32,10 @@ function coinsReducer(state = initialState, action) {
         case LOAD_CHART_DATA:
             return Object.assign({}, state, {
                 chart: action.chartData
+            });
+        case LOAD_COIN_DETAILS:
+            return Object.assign({}, state, {
+                coinDetails: action.coinDetails
             });
         default:
             return state;

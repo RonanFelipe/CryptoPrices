@@ -1,5 +1,5 @@
 import {UPDATE_COINS_DATA, UPDATE_COINS_DATA_SUCCESS, UPDATE_COINS_DATA_ERROR, LOAD_CHART_DATA} from './ActionTypes';
-import {LOAD_SEARCH_VALUES} from './ActionTypes';
+import {LOAD_SEARCH_VALUES, LOAD_COIN_DETAILS} from './ActionTypes';
 import fetch from 'cross-fetch';
 const api_url = 'https://poloniex.com/public?command=returnTicker';
 
@@ -89,6 +89,30 @@ export function initChart(searchOptions) {
                 });
             });
             dispatch(loadChart(searchResult));
+        }
+    }
+}
+
+function loadCardDetail(coinData) {
+    return {
+        type: LOAD_COIN_DETAILS,
+        coinDetails: coinData
+    }
+}
+
+export function loadCard(coin) {
+    console.log("Load Card");
+    return (dispatch, getState) => {
+        console.log("Load Card inside");
+        const { coinsReducer: {coins} = {} } = getState();
+        if (coins !== undefined) {
+            let coinData = [];
+            Object.keys(coins).forEach(key => {
+                if (coin === key) {
+                    coinData.push({[key]: coins[key]});
+                }
+            });
+            dispatch(loadCardDetail(coinData));
         }
     }
 }
