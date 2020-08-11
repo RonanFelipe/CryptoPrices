@@ -3,6 +3,7 @@
 - [x] React (with Hooks)
 - [x] Redux
 - [x] Material UI
+- [x] React-Select
 - [x] Redux-Thunk
 - [x] Recharts
 
