@@ -130,7 +130,7 @@ const useStyles = makeStyles((theme) => ({
         fontWeight: 'bold',
     },
     fixedHeight: {
-        height: 240,
+        height: 345,
     },
 }));
 
@@ -144,6 +144,7 @@ export default function Dashboard() {
         setOpen(false);
     };
     const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
+    const customPadding = { padding: '2px 2px 2px 2px' };
 
     return (
         <div className={classes.root}>
@@ -204,16 +205,16 @@ export default function Dashboard() {
                         </Grid>
                         {/* Recent Deposits */}
                         <Grid item xs={12} md={4} lg={3}>
-                            <Paper className={fixedHeightPaper}>
+                            <Paper className={fixedHeightPaper} style={customPadding}>
                                 <Deposits />
                             </Paper>
                         </Grid>
                         {/* Recent Orders */}
-                        <Grid item xs={12}>
+                        {/*<Grid item xs={12}>
                             <Paper className={classes.paper}>
                                 <Orders />
                             </Paper>
-                        </Grid>
+                        </Grid>*/}
                     </Grid>
                     <Box pt={4}>
                         <Copyright />

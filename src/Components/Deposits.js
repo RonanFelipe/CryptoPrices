@@ -16,7 +16,7 @@ const theme = createMuiTheme({
     overrides: {
         MuiTableCell: {
             root: {
-                padding: '0px, 0px, 0px, 0px',
+                padding: '2px, 2px, 2px, 2px',
             },
             body: {
                 height: '30px !important',
@@ -24,9 +24,6 @@ const theme = createMuiTheme({
             head: {
                 height: '30px !important',
             },
-            paddingNone: {
-                paddingNone: 'true',
-            }
         }
     }
 });
@@ -48,6 +45,7 @@ export default function Deposits() {
     const classes = useStyles();
     const coinDetail = useSelector(state => state.coinsReducer.coinDetails);
     const [coinCardDetails, setCoinCardDetails] = useState(null);
+    const customPadding = { padding: '5px 5px 5px 5px' };
 
     useEffect(() => {
         if (coinDetail !== undefined) {
@@ -65,33 +63,33 @@ export default function Deposits() {
                         return <div key={key}>
                             <TableContainer component={Paper}>
                                 <ThemeProvider theme={theme}>
-                                    <Table className={classes.table} aria-label="simple table">
+                                    <Table size="small" aria-label="simple table">
                                         <TableHead>
-                                            <TableRow className={classes.row}>
-                                                <TableCell padding="none">{key}</TableCell>
-                                                <TableCell padding="none">Value</TableCell>
+                                            <TableRow>
+                                                <TableCell style={customPadding}>{key}</TableCell>
+                                                <TableCell style={customPadding}>Value</TableCell>
                                             </TableRow>
                                         </TableHead>
                                         <TableBody>
                                             <TableRow className={classes.row}>
-                                                <TableCell padding="none">Last</TableCell>
-                                                <TableCell padding="none">{coinCardDetails[key].last}</TableCell>
+                                                <TableCell style={customPadding}>Last</TableCell>
+                                                <TableCell style={customPadding}>{coinCardDetails[key].last}</TableCell>
                                             </TableRow>
                                             <TableRow className={classes.row}>
-                                                <TableCell padding="none">Lowest Ask</TableCell>
-                                                <TableCell padding="none">{coinCardDetails[key].lowestAsk}</TableCell>
+                                                <TableCell style={customPadding}>Lowest Ask</TableCell>
+                                                <TableCell style={customPadding}>{coinCardDetails[key].lowestAsk}</TableCell>
                                             </TableRow>
                                             <TableRow className={classes.row}>
-                                                <TableCell padding="none">Highest Bid</TableCell>
-                                                <TableCell padding="none">{coinCardDetails[key].highestBid}</TableCell>
+                                                <TableCell style={customPadding}>Highest Bid</TableCell>
+                                                <TableCell style={customPadding}>{coinCardDetails[key].highestBid}</TableCell>
                                             </TableRow>
                                             <TableRow className={classes.row}>
-                                                <TableCell padding="none">High 24 Hr</TableCell>
-                                                <TableCell padding="none">{coinCardDetails[key].high24hr}</TableCell>
+                                                <TableCell style={customPadding}>High 24 Hr</TableCell>
+                                                <TableCell style={customPadding}>{coinCardDetails[key].high24hr}</TableCell>
                                             </TableRow>
                                             <TableRow className={classes.row}>
-                                                <TableCell padding="none">Low 24 Hr</TableCell>
-                                                <TableCell padding="none">{coinCardDetails[key].low24hr}</TableCell>
+                                                <TableCell style={customPadding}>Low 24 Hr</TableCell>
+                                                <TableCell style={customPadding}>{coinCardDetails[key].low24hr}</TableCell>
                                             </TableRow>
                                         </TableBody>
                                     </Table>
