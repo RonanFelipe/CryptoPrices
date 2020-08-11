@@ -59,8 +59,8 @@
         <entry file="file://$PROJECT_DIR$/README.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="465">
-                <caret line="30" column="45" lean-forward="true" selection-start-line="30" selection-start-column="45" selection-end-line="30" selection-end-column="45" />
+              <first_editor relative-caret-position="451">
+                <caret line="46" lean-forward="true" selection-start-line="46" selection-end-line="46" />
               </first_editor>
               <second_editor />
             </state>
@@ -435,7 +435,7 @@
       <option name="presentableId" value="Default" />
       <updated>1596573616703</updated>
       <workItem from="1596573619384" duration="74459000" />
-      <workItem from="1597095269321" duration="24026000" />
+      <workItem from="1597095269321" duration="24501000" />
     </task>
     <task id="LOCAL-00001" summary="project design starting with mock data">
       <created>1596669874038</created>
@@ -493,14 +493,29 @@
       <option name="project" value="LOCAL" />
       <updated>1597182690626</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="images for readme.md">
+      <created>1597186086453</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1597186086453</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Writing Readme">
+      <created>1597186296898</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1597186296898</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="98485000" />
+    <option name="totallyTimeSpent" value="98960000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Favorites" order="0" side_tool="true" />
       <window_info id="npm" order="1" side_tool="true" />
@@ -575,7 +590,9 @@
     <MESSAGE value="card with coin details" />
     <MESSAGE value="css adjusts" />
     <MESSAGE value="cleaning imports and also adjusting more CSS" />
-    <option name="LAST_COMMIT_MESSAGE" value="cleaning imports and also adjusting more CSS" />
+    <MESSAGE value="images for readme.md" />
+    <MESSAGE value="Writing Readme" />
+    <option name="LAST_COMMIT_MESSAGE" value="Writing Readme" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/package.json">
@@ -914,8 +931,8 @@
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="465">
-            <caret line="30" column="45" lean-forward="true" selection-start-line="30" selection-start-column="45" selection-end-line="30" selection-end-column="45" />
+          <first_editor relative-caret-position="451">
+            <caret line="46" lean-forward="true" selection-start-line="46" selection-end-line="46" />
           </first_editor>
           <second_editor />
         </state>

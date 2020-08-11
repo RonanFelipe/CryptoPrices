@@ -37,4 +37,10 @@ O conhecimento da regra de negócio foi um fator limitante nas funcionalidades
 e exibição de dados, devido ao meu baixo conhecimento em crypto moedas e os 
 seus dados e detalhes, não foi possível realizar uma exibição de dados que 
 sejam interessantes para o usuário, poderia ter sido trabalhado de uma melhor 
-forma o parâmetro para exibição e comparação.
+forma o parâmetro para exibição e comparação.  
+
+
+#### Como utilizar  
+- git clone https://github.com/RonanFelipe/CryptoPrices.git
+- npm install
+- npm start
