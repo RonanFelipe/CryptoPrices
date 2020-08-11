@@ -1,68 +1,40 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### Tecnologias  
 
-## Available Scripts
+- [x] React (with Hooks)
+- [x] Redux
+- [x] Material UI
+- [x] Redux-Thunk
+- [x] Recharts
 
-In the project directory, you can run:
 
-### `npm start`
+### Arquitetura e Funcionalidades  
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+O sistema realiza requests para a api poloniex, por meio das actions 
+utilizando redux-thunk, sendo assim foi possível realizar actions que 
+retornam functions que disparam actions que atualizam a store.
+O gráfico de moedas é atualizado de acordo com as moedas presentes na busca, 
+a busca permite pesquisar multiplas moedas, sendo possível visualizar 
+simultaneamente no gráfico os valores de cada moeda em um gráfico linear. 
+Para essa funcionalidade, é disparado uma action a cada moeda que é 
+adicionada na busca, e o gráfico é atualizado verificando as mudanças na 
+store referente a busca. Ao clicar em uma moeda no gráfico, o card esquerdo 
+vai ser atualizado com as informações detalhadas da moeda clicada, mas uma 
+vez foi utilizado uma action para atualizar a store, e o card com detalhes 
+da moedaverifica por atualizações na store.  
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
 
-### `npm test`
+### Imagens  
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+![Chart](https://github.com/RonanFelipe/CryptoPrices/blob/master/src/images/Chart.PNG)   
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+![Search](https://github.com/RonanFelipe/CryptoPrices/blob/master/src/images/Search.PNG)  
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+#### Dificuldades  
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+O conhecimento da regra de negócio foi um fator limitante nas funcionalidades 
+e exibição de dados, devido ao meu baixo conhecimento em crypto moedas e os 
+seus dados e detalhes, não foi possível realizar uma exibição de dados que 
+sejam interessantes para o usuário, poderia ter sido trabalhado de uma melhor 
+forma o parâmetro para exibição e comparação.
