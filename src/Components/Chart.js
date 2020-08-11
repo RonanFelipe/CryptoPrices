@@ -12,25 +12,18 @@ export default function Chart() {
     useEffect(() => {
         if (apiData.doUpdate) {
             dispatch(fetchCoinsIfNeeded());
-            console.log("1 inside");
         }
-        console.log("1");
     }, [setChartData, apiData, dispatch]);
 
     useEffect(() => {
-        console.log("second use effect");
-        console.log(apiData);
         if (apiData !== undefined) {
             // const coinObject = apiData.coins;
             const coinsArray = apiData.chart;
             // Object.keys(coinObject).forEach(key => {
             //     coinsArray.push({name: key, last: parseFloat(coinObject[key].last), high24hr: parseFloat(coinObject[key].high24hr)})
             // });
-            console.log("---- second use effect");
-            console.log(coinsArray);
             setChartData(coinsArray);
         }
-        console.log("2 end second use effect");
     }, [apiData, setChartData]);
 
     function getData(chartDataClick) {

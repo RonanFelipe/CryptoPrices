@@ -101,9 +101,7 @@ function loadCardDetail(coinData) {
 }
 
 export function loadCard(coin) {
-    console.log("Load Card");
     return (dispatch, getState) => {
-        console.log("Load Card inside");
         const { coinsReducer: {coins} = {} } = getState();
         if (coins !== undefined) {
             let coinData = [];

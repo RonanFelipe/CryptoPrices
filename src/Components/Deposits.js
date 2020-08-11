@@ -39,6 +39,10 @@ const useStyles = makeStyles({
     row: {
         height: '12px',
     },
+    textHelp: {
+        paddingTop: '20px',
+        paddingLeft: '3px',
+    }
 });
 
 export default function Deposits() {
@@ -50,8 +54,6 @@ export default function Deposits() {
     useEffect(() => {
         if (coinDetail !== undefined) {
             setCoinCardDetails(coinDetail[0]);
-            console.log(coinDetail);
-            console.log(coinCardDetails);
         }
     }, [coinDetail, setCoinCardDetails, coinCardDetails]);
 
@@ -99,17 +101,10 @@ export default function Deposits() {
                     })}
                 </div>
             ) : (
-                <Typography variant="h6">
-                    Clique sobre uma moeda nas linhas do gráfico para exibir seus dados.
+                <Typography variant="h6" className={classes.textHelp}>
+                    Selecione moedas na Busca & Clique sobre uma moeda nas linhas do gráfico para exibir seus dados.
                 </Typography>
             )}
-
-            {/* <Typography component="p" variant="h4">
-                $3,024.00
-            </Typography>
-            <Typography color="textSecondary" className={classes.depositContext}>
-                on 15 March, 2019
-            </Typography> */}
         </div>
     );
 }

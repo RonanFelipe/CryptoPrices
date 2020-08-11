@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import Select from 'react-select';
 import { initSearch, initChart } from "../actions";
 
-const CustomClearText = () => 'clear all';
+const CustomClearText = () => 'Limpar busca';
 const ClearIndicator = props => {
     const {
         children = <CustomClearText />,
@@ -52,8 +52,6 @@ export default function CustomClearIndicator() {
     }, [searchValues, setOptionValues]);
 
     const handleChange = (option) => {
-        console.log("Options");
-        console.log(option);
         dispatch(initChart(option));
     };
 
